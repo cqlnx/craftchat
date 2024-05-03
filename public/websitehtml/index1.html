@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>About Craftchat</title>
+    <meta content="Craftchat.duckdns" />
+    <meta content="Hey! Welcome to my website!" />
+    <meta content="https://Craftchat.duckdns/" />
+    <meta content="#00BEFF" data-react-helmet="true" />
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/style4.css">
+</head>
+<body>
+    <div class="terminal">
+        <div class="topbar">
+            <div class="close"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></div>
+            <div class="maximize"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0 0v-560 560Z"/></svg></div>
+            <div class="minimize"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M240-120v-80h480v80H240Z"/></svg></div>
+        </div>
+                <div class="content">
+            <section id="welcome">
+<pre id="welcomeText">
+  /$$$$$$  /$$                   /$$          /$$                                                        
+ /$$__  $$| $$                  | $$         | $$                                                        
+| $$  \__/| $$$$$$$   /$$$$$$  /$$$$$$       | $$        /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$ 
+| $$      | $$__  $$ |____  $$|_  $$_//$$$$$$| $$       /$$__  $$ /$$__  $$ /$$__  $$ /$$__  $$ /$$__  $$
+| $$      | $$  \ $$  /$$$$$$$  | $$ |______/| $$      | $$  \ $$| $$  \ $$| $$  \ $$| $$$$$$$$| $$  \__/
+| $$    $$| $$  | $$ /$$__  $$  | $$ /$$     | $$      | $$  | $$| $$  | $$| $$  | $$| $$_____/| $$      
+|  $$$$$$/| $$  | $$|  $$$$$$$  |  $$$$/     | $$$$$$$$|  $$$$$$/|  $$$$$$$|  $$$$$$$|  $$$$$$$| $$      
+ \______/ |__/  |__/ \_______/   \___/       |________/ \______/  \____  $$ \____  $$ \_______/|__/      
+                                                                  /$$  \ $$ /$$  \ $$                    
+                                                                 |  $$$$$$/|  $$$$$$/                    
+                                                                  \______/  \______/ 
+</pre>
+            </section>
+        <div class="content">
+            <section id="welcome">
+                <pre id="aboutCraftChat"></pre>
+            </section>
+            <section id="about_me">
+                <span class="prefix">
+                    <span style="color: #747f8d;">root@<span class="servername">cheezball</span><span class="shortServername">cheez</span></span>:~<span style="color: #747f8d;">$ </span>
+                </span>
+                <span class="command">Logchat 5b5t.org</span>
+                <pre id="messages"></pre>
+            </section>
+        </div>
+    </div>
+<div class="links-container">
+    <a id="discord-link" href="https://discord.gg/A6ErRQ6j4s" target="_blank">|Discord|</a>
+    <a id="logs-link" href="http://craftchat.duckdns.org:1519/Logs" target="_blank">|Logs|</a>
+    <a id="about-link" href="http://craftchat.duckdns.org:1519/About">|About|</a>
+    <a id="filter-logs" href="http://craftchat.duckdns.org:1519/Filter-Logs">|Filter-Logs|</a>
+    <a id="mentioned" href="http://craftchat.duckdns.org:1519/Popiiumaa" target="_blank">|Popiiumaa|</a>
+</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.1/socket.io.js"></script>
+    <script>
+        const socket = io();
+        const aboutCraftChat = document.getElementById('aboutCraftChat');
+        const messages = document.getElementById('messages');
+        const logCounter = document.getElementById('logCount');
+
+        function downloadLogs() {
+            fetch('/logs.txt')
+                .then(response => response.text())
+                .then(text => {
+                    const blob = new Blob([text], { type: 'text/plain' });
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'logs.txt';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                })
+                .catch(error => console.error('Error downloading logs:', error));
+        }
+
+        function countLogs() {
+            fetch('logs/logs.txt')
+                .then(response => response.text())
+                .then(text => {
+                    const lines = text.split('\n');
+                    const logCount = lines.length;
+                    logCounter.textContent = `${logCount.toLocaleString()}`;
+                })
+                .catch(error => console.error('Error counting logs:', error));
+        }
+
+        socket.on('output', (output) => {
+            const item = document.createElement('div');
+            item.textContent = output;
+            messages.appendChild(item);
+            messages.scrollTop = messages.scrollHeight;
+            countLogs();
+        });
+        socket.on('chat message', (msg) => {
+            const timestamp = new Date().toLocaleString();
+            if (msg.username !== 'popiiumaa' && msg.username !== 'Server') {
+                const item = document.createElement('div');
+                item.textContent = `[${timestamp}] ${msg.username}: ${msg.message}`;
+                messages.appendChild(item);
+                messages.scrollTop = messages.scrollHeight;
+                countLogs();
+            }
+        });
+
+        window.onload = countLogs;
+        setInterval(countLogs, 5000);
+    </script>
+</body>
+</html>

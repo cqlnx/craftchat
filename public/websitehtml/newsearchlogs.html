@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Filter Logs</title>
+    <meta content="Craftchat.duckdns" />
+    <meta content="Hey! Welcome to my website!" />
+    <meta content="https://Craftchat.duckdns/" />
+    <meta content="#00BEFF" data-react-helmet="true" />
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/style4.css">
+</head>
+<body>
+    <div class="terminal">
+        <div class="topbar">
+            <div class="close"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></div>
+            <div class="maximize"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0 0v-560 560Z"/></svg></div>
+            <div class="minimize"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M240-120v-80h480v80H240Z"/></svg></div>
+        </div>
+        <div class="content">
+            <section id="welcome">
+<pre id="welcomeText">
+ /$$$$$$$$ /$$ /$$   /$$                                 /$$                                    
+| $$_____/|__/| $$  | $$                                | $$                                    
+| $$       /$$| $$ /$$$$$$    /$$$$$$   /$$$$$$         | $$        /$$$$$$   /$$$$$$   /$$$$$$$
+| $$$$$   | $$| $$|_  $$_/   /$$__  $$ /$$__  $$ /$$$$$$| $$       /$$__  $$ /$$__  $$ /$$_____/
+| $$__/   | $$| $$  | $$    | $$$$$$$$| $$  \__/|______/| $$      | $$  \ $$| $$  \ $$|  $$$$$$ 
+| $$      | $$| $$  | $$ /$$| $$_____/| $$              | $$      | $$  | $$| $$  | $$ \____  $$
+| $$      | $$| $$  |  $$$$/|  $$$$$$$| $$              | $$$$$$$$|  $$$$$$/|  $$$$$$$ /$$$$$$$/
+|__/      |__/|__/   \___/   \_______/|__/              |________/ \______/  \____  $$|_______/ 
+                                                                             /$$  \ $$          
+                                                                            |  $$$$$$/          
+                                                                             \______/        
+</pre>
+            </section>
+            <section id="logs">
+                <span class="prefix">
+                        <span style="color: #747f8d;">root@ <span class="servername">cheezball</span><span class="shortServername">cheez</span></span>:~$
+                <span class="command">filterLogs:</span>
+                <input type="text" id="keyword" placeholder="Type keyword to filter">
+                <button onclick="filterLogs()">Filter Logs</button>
+<pre id="filteredLogs">
+<!-- Filtered logs will be displayed here -->
+</pre>
+<p id="filteredLogsCount"></p>
+<button id="downloadButton" style="display: none;" onclick="downloadLogs()">Download Filtered Logs</button>
+            </section>
+        </div>
+    </div>
+    <a id="go-back" href="http://craftchat.duckdns.org:1519/logger" style="position: fixed; right: 10px; top: 20px; color: white; text-decoration: none;">Go back to logger</a>
+      
+    <script>
+        async function fetchLogs() {
+            try {
+                const response = await fetch('logs/logs.txt');
+                if (response.ok) {
+                    return await response.text();
+                } else {
+                    console.log("Failed to fetch logs. Status code:", response.status);
+                    return null;
+                }
+            } catch (error) {
+                console.error("Error fetching logs:", error);
+                return null;
+            }
+        }
+
+        function filterLogs() {
+            const keyword = document.getElementById('keyword').value;
+            document.getElementById('filteredLogs').innerHTML = '<p>Loading...</p>';
+            fetchLogs().then(logs => {
+                if (logs) {
+                    const filteredLogs = logs.split('\n').filter(log => log.toLowerCase().includes(keyword.toLowerCase()));
+                    const filteredLogsCount = filteredLogs.length;
+                    const filteredLogsHtml = filteredLogs.join('<br>');
+                    const container = document.getElementById('filteredLogs');
+                    container.innerHTML = `<p>Found ${filteredLogsCount} matches for "${keyword}":</p><div>${filteredLogsHtml}</div>`;
+                    document.getElementById('filteredLogsCount').textContent = `Found ${filteredLogsCount} matches for "${keyword}"`;
+                    if (filteredLogsCount > 0) {
+                        document.getElementById('downloadButton').style.display = 'inline-block';
+                        document.getElementById('downloadButton').setAttribute('data-filename', `${keyword}.txt`);
+                    } else {
+                        document.getElementById('downloadButton').style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        function downloadLogs() {
+            const keyword = document.getElementById('keyword').value;
+            const filteredLogs = document.getElementById('filteredLogs').innerText;
+            const blob = new Blob([filteredLogs], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${keyword}.txt`;
+            document.body.appendChild(a);
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
