@@ -353,7 +353,7 @@ app.use((req, res, next) => {
 });
 
 // Start the server
-http.listen(3000, '0.0.0.0', () => {
+http.listen(2345, '0.0.0.0', () => {
     console.log('Web server listening on craftchat.duckdns.org:21659');
 });
 
