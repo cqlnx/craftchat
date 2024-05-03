@@ -1,0 +1,154 @@
+/* style.css */
+
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    width: 80%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: rgba(34, 34, 34, 0.7);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    margin-bottom: -20px;
+    color: inherit; /* Ensure text color inherits from body */
+}
+
+#messages {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    max-height: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 0;
+}
+
+#messages li {
+    margin-bottom: 5px;
+}
+
+#command-form {
+    margin-top: 10px;
+    display: flex;
+}
+
+#command-input {
+    flex: 1;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+#send-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+}
+
+#download-button {
+    padding: 5px 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.credits {
+    text-align: center;
+    margin-top: 20px;
+    color: #ccc;
+    margin-bottom: -20px;
+}
+
+.timestamp {
+    text-align: center;
+    color: #ccc;
+    padding: 5px 10px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Theme-specific styles */
+/* Black Theme */
+body.black-theme {
+    background-image: url('https://cdn.discordapp.com/attachments/730767149630750732/1226282599375441921/Untitled.png?ex=662433aa&is=6611beaa&hm=00ecb467f2eb737a4c4421a6a2914423e1bd0ca2b00175d957cf4f416d5ba630&');
+    background-size: 100% 100%;
+    color: #fff;
+}
+
+body.black-theme a {
+    color: white; /* Hyperlinks are white */
+}
+
+/* White Theme */
+body.white-theme {
+    background-image: url('https://cdn.discordapp.com/attachments/730767149630750732/1226283995835269201/Untitled1.jpg?ex=662434f7&is=6611bff7&hm=4cc9df4866f4f7b1c6f1edd3ff00147e63d6918a6191fc7a41fc3f347e43eb03&');
+    background-size: 100% 100%;
+    color: #000;
+}
+
+body.white-theme a {
+    color: white; /* Hyperlinks are white */
+}
+
+body.white-theme #messages li {
+    color: white; /* Message text color is white */
+}
+
+/* Estonia Theme */
+body.estonia-theme {
+    background-image: url('https://cdn.discordapp.com/attachments/730767149630750732/1226285702577262673/Untitled2.jpg?ex=6624368e&is=6611c18e&hm=a996ce5e70f8db25ecebbbe9a5ce1b01d9b798beffca17c66f737af63d1a3056&');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+body.estonia-theme a {
+    color: white; /* Hyperlinks are white */
+}
+
+body.estonia-theme #messages li {
+    color: white; /* Message text color is white */
+}
+
+/* Theme buttons */
+.theme-button-white {
+    color: gray;
+    background-color: #FFFFFF;
+}
+
+.theme-button-black {
+    color: gray;
+    background-color: #000;
+}
+
+.theme-button img {
+    vertical-align: middle;
+    height: 20px; /* Adjust height as needed */
+}
+
+.theme-button-estonia {
+    color: gray;
+    background-image: url('https://cdn.discordapp.com/attachments/730767149630750732/1221539015954534480/EESTI.png?ex=6612f1dc&is=66007cdc&hm=e6c52df9fc676b0726fe9b8b2af83b39390ce26a711b3f24c8ceccbe77e1c3c6&');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
