@@ -1,94 +1,92 @@
-<html>
-  <head>
-    <title>To Do App</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.css"
-    />
-  </head>
-
-  <body>
-
-    <!-- REMOVE MESSAGE BEGIN -->
-
-    <div class="container-lg mb-6">
-      <div style="background-color: rgb(4 0 255 / 6%); padding: 15px; border-radius: 10px; margin-top: 10px;">
-        <div class="row">
-          <div class="col col-12 col-md-2 text-center d-inline">
-            <img src="https://adaptable.io/img/party-popper.svg" style="max-width: 150px;" />
-          </div>
-          <div class="col col-12 col-md-8 text-center">
-            <h2 class="display-4 mt-3">Congratulations!</h2>
-            <p style="font-size: 1.5rem">
-              Your app is now running on
-            </p>
-            <img src="https://adaptable.io/img/color lockup.svg" style="max-width: 200px;" />
-          </div>
-          <div class="col col-md-2 text-center d-none d-md-block">
-            <img src="https://adaptable.io/img/party-popper.svg" style="max-width: 150px;" />
-          </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Craftchat info</title>
+    <meta content="Craftchat.duckdns" />
+    <meta content="Hey! Welcome to my website!" />
+    <meta content="https://Craftchat.duckdns/" />
+    <meta content="#00BEFF" data-react-helmet="true" />
+    <link rel="icon" href="images/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style/style4.css">
+</head>
+<body>
+    <div class="terminal">
+        <div class="topbar">
+            <div class="close"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></div>
+            <div class="maximize"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0 0v-560 560Z"/></svg></div>
+            <div class="minimize"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M240-120v-80h480v80H240Z"/></svg></div>
         </div>
+        <div class="content">
+            <section id="welcome">
+<pre id="welcomeText">
+          /$$                                     /$$                 /$$ /$$
+          | $$                                    | $$                | $$| $$
+  /$$$$$$$| $$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$$$| $$$$$$$   /$$$$$$ | $$| $$
+ /$$_____/| $$__  $$ /$$__  $$ /$$__  $$|____ /$$/| $$__  $$ |____  $$| $$| $$
+| $$      | $$  \ $$| $$$$$$$$| $$$$$$$$   /$$$$/ | $$  \ $$  /$$$$$$$| $$| $$
+| $$      | $$  | $$| $$_____/| $$_____/  /$$__/  | $$  | $$ /$$__  $$| $$| $$
+|  $$$$$$$| $$  | $$|  $$$$$$$|  $$$$$$$ /$$$$$$$$| $$$$$$$/|  $$$$$$$| $$| $$
+\_______/|__/  |__/ \_______/ \_______/|________/|_______/  \_______/|__/|__/
+                                                                        
+</pre>
+            </section>
+            <section id="about_me">
+                <span class="prefix">
+                        <span style="color: #747f8d;">root@<span class="servername">cheezball</span><span class="shortServername">cheez</span></span>:~<span style="color: #747f8d;">$ </span></span>
+                <span class="command">cat about_me.txt</span>
+<pre>
+Hi! I'm Reimo, a 13-year-old developer from Estonia!
+I have made a program named <b>Craftchat</b>, a program that that logs chat messages on minecraft servers.
+Craftchat has already loged <b><span id="logCount"></span></b> lines of messages more about it <a id="discordInv" href="http://craftchat.duckdns.org:1519/About">here</a>!
+Consider joining <b>me and others</b> on the Discord server <a id="discordInv" href="https://discord.com/invite/A6ErRQ6j4s">here</a>.
+I <b>love</b> programming in Python, Html and JavaScript.
+</pre>
+            </section>
 
-        <h2 class="display-5 text-center mt-5">What's Next?</h2>
-
-        <p class="text-center width-limited-text mb-4">
-          Get started by checking out your new app.
-          Add tasks to your To Do List <a href="#todo">below</a>.
-          They're saved to your new MongoDB instance via your REST API based on <a href="https://expressjs.com" target="_blank">Express</a> and <a href="https://prisma.io" target="_blank">Prisma</a>.
-          Then, try out some of the suggestions in the pre-populated To Do items.
-        </p>
-
-        <div class="row mt-4">
-          <p class="text-center">
-            See the <a href="https://adaptable.io/docs/starters/express-prisma-mongo-starter#what-s-next" target="_blank">Express + Prisma + MongoDB Starter Guide</a> for step-by-step
-            instructions for each.
-          </p>
-          <p class="text-center">
-            <a target="_blank" href="https://adaptable.io/docs/starters/express-prisma-mongo-starter#what-s-next" style="background: #363795; padding: 13px 30px; border-radius: 30px; color: #fff; font-size:18px; text-decoration: none;">Go to the Starter Guide</a>
-          </p>
-        </div>
-      </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-    <!-- REMOVE MESSAGE END -->
-
-    <h1 class="text-center" id="todo">Express + Prisma + MongoDB</h1>
-    <h2 class="text-center">To Do List</h2>
-
-    <section style="background-color:rgb(4 0 255 / 6%);">
-      <div class="container-lg p-5">
-        <div class="row d-flex justify-content-center align-items-center">
-          <div class="col col-xl-10">
-
-            <div class="card">
-              <div class="card-body p-5">
-
-                <form class="d-flex justify-content-center align-items-center mb-4" id="todo-form">
-                  <div class="form-outline flex-fill">
-                    <input type="text" id="add-input" class="form-control" />
-                    <label class="form-label" for="add-input">New task...</label>
-                  </div>
-                  <button type="submit" class="btn btn-info ms-2">Add</button>
-                </form>
-
-                <ul class="list-group mb-0" id="todo-list" />
-
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
+            <section id="socials">
+                <span class="prefix">
+                        <span style="color: #747f8d;">root@<span class="servername">cheezball</span><span class="shortServername">cheez</span></span>:~<span style="color: #747f8d;">$ </span></span>
+                    <span class="command">./socials.sh</span>
+                <pre>
+Do you want to contact me?
+You can find all my socials below!
+I will probably respond the fastest on Discord.
+</pre>
+</section>
+<section id="pgpSection" class="nomargin">
+    <span class="prefix">
+        <span style="color: #747f8d;">root@<span class="servername">cheezball</span><span class="shortServername">cheez</span></span>:~<span style="color: #747f8d;">$ </span></span>
+    <span class="command" id="curlPgpCommand"></span><span class="command" id="alternativePgpCommand"></span><span id="blinking_cursor"></span>
+    <input type="checkbox" id="showPgp">
     </section>
+        </div>
+    </div>
+    <section id="badges"> 
+                    <a href="https://www.minecraft.net/en-us/"><img src="/images/minecraft.gif" alt="Minecraft"></a>
+                    <a href="http://craftchat.duckdns.org:1519/"><img src="/images/craftchat.png " alt="CraftChat"></a>
+                    <a href="https://code.visualstudio.com/"><img src="/images/vscbutton.gif " alt="Visual studio"></a>
+                    <a href="https://ssi.fyi/"><img src="/images/88x31.gif" alt="serverscanning"></a>
+                    <a href="https://www.youtube.com/watch?v=YAgJ9XugGBo/"><img src="/images/gh.gif" alt="serverscanning"></a>
+                    <a href="https://discord.com/users/521371256763711489/"><img src=/images/discord.png alt="cheezball69420"></a>
+                    <a href="https://discord.com/invite/A6ErRQ6j4s"><img src=/images/discordserv.png alt="discordserver"></a>
+                    <a href="http://craftchat.duckdns.org:1519/sus"><img src=/images/Clickme.png alt="clickme"></a>
+            </section> 
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js" ></script>
-    <script type="text/javascript" src="../js/client.js" ></script>
+<a id="go-back" href="http://craftchat.duckdns.org:1519/logger" style="position: fixed; right: 10px; top: 20px; color: white; text-decoration: none;">Go back to logger</a>
+    
+        <script>
+        fetch('logs/logs.txt')
+            .then(response => response.text())
+            .then(data => {
+                const logCount = data.split('\n').length;
+                document.getElementById('logCount').textContent = `${logCount.toLocaleString()}`
+            })
+            .catch(error => {
+                console.error('Error fetching log count:', error);
+            });
+    </script>
 
-  </body>
+</body>
 </html>
